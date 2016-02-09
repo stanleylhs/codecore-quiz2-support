@@ -4,22 +4,22 @@ RSpec.describe Request, type: :model do
   describe "validations" do
     it "doesn't allow creating a request with no name" do 
       # GIVEN: c w/o title
-      c = Request.new
+      r = Request.new
       # WHEN: validation
-      request_valid = c.valid?
+      r.valid?
       # THEN: expect false
-      expect(request_valid).to eq(false)
+      expect(r.errors).to have_key(:name)      
       # should is deprecated
     end
     it "requires an email" do
       # Give
-      c = Request.new
+      r = Request.new
       # When
-      c.valid?
+      r.valid?
       # Then
       # have_key is a matcher
       # has_key
-      expect(c.errors).to have_key(:email)
+      expect(r.errors).to have_key(:email)
     end
     # it "requires a goal that must be greater than 10" do
     #   c = Campaign.new(goal: 1)
