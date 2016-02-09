@@ -13,3 +13,16 @@ table tr.evenrow {
 table thead {
     background-color: lightgrey;
 }
+
+#title {
+	float: left;
+}
+
+#new, #search_box {
+	float: right;
+}
+
+#pagination {
+	width: 100%;
+	text-align: center;
+}
