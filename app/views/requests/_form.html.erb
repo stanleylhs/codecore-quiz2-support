@@ -21,7 +21,12 @@
   </div>
   <div class="field">
     <%= f.label :department %><br>
-    <%= f.text_field :department %>
+    <%= f.radio_button(:department, "Sales") %>
+    <%= label(:department_sales, "Sales") %>
+    <%= f.radio_button(:department, "Marketing") %>
+    <%= label(:department_marketing, "Marketing") %>
+    <%= f.radio_button(:department, "Technical") %>
+    <%= label(:department_technical, "Technical") %>
   </div>
   <div class="field">
     <%= f.label :message %><br>
