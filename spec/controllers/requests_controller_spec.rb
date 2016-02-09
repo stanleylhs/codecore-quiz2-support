@@ -1,5 +1,6 @@
 require 'rails_helper'
 
+#Bonus 2
 RSpec.describe RequestsController, type: :controller do
   let(:request) { FactoryGirl.create(:request) }
 

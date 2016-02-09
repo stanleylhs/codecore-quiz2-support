@@ -1,6 +1,7 @@
 class RequestsController < ApplicationController
   before_action :set_request, only: [:show, :edit, :update, :destroy, :mark]
 
+  # Pt 3a Mark action
   def mark
     @request.done = !@request.done
     @request.save
@@ -10,6 +11,7 @@ class RequestsController < ApplicationController
   # GET /requests
   # GET /requests.json
   def index
+    # Pt 5 add paging
     if params[:search]
       @requests = Request.search(params[:search]).order("created_at DESC").page(params[:page]).per(7)
     else
@@ -35,6 +37,7 @@ class RequestsController < ApplicationController
   # POST /requests.json
   def create
     @request = Request.new(request_params)
+    # Pt 3b All new Support Request must be marked as "Not Done"
     @request.done = false
 
     respond_to do |format|
