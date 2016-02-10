@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :requests
 
-  post '/requests/:id/mark' => 'requests#mark', as: :mark_request
+  patch '/requests/:id/mark' => 'requests#mark', as: :mark_request
 
   root 'requests#index'
   # The priority is based upon order of creation: first created -> highest priority.
