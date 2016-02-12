@@ -13,9 +13,9 @@ class RequestsController < ApplicationController
   def index
     # Pt 5 add paging
     if params[:search]
-      @requests = Request.search(params[:search]).order("created_at DESC").page(params[:page]).per(7)
+      @requests = Request.search(params[:search]).order("done ASC").page(params[:page]).per(7)
     else
-      @requests = Request.order("created_at DESC").page(params[:page]).per(7)
+      @requests = Request.order("done ASC").page(params[:page]).per(7)
     end
   end
 
@@ -38,7 +38,8 @@ class RequestsController < ApplicationController
   def create
     @request = Request.new(request_params)
     # Pt 3b All new Support Request must be marked as "Not Done"
-    @request.done = false
+    # refactored to model
+    # @request.done = false
 
     respond_to do |format|
       if @request.save

@@ -42,7 +42,7 @@
         <td><%= button_to 'Edit', edit_request_path(request),method: :get %></td>
         <td><%= button_to 'Destroy', request, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <td>
-          <% done_text = request.done ? 'Done' : 'Not Done' %>
+          <% done_text = request.done? ? 'Done' : 'Not Done' %>
           <%= (button_to done_text, mark_request_path(request), method: :patch) %>
         </td>
       </tr>
