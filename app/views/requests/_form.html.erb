@@ -21,6 +21,7 @@
   </div>
   <div class="field">
     <%= f.label :department %><br>
+    <%# TODO refractor radio button %>
     <%= f.radio_button(:department, Request::DEPT_SALES) %>
     <%= label(:department_sales, Request::DEPT_SALES) %>
     <%= f.radio_button(:department, Request::DEPT_MARKETING) %>

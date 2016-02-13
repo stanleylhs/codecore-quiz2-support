@@ -6,12 +6,14 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-department = %w(Sales Marketing Technical)
+# department = %w(Sales Marketing Technical)
 
 1000.times do
   Request.create name: Faker::Name.name,
                  email: Faker::Internet.email,
-                 department: department[rand(3)],
+                 department: Request::DEPARTMENTS.sample,
                  message: Faker::Lorem.sentence,
                  done: rand(2)
 end
+
+puts Cowsay.say("Generated a 1000 support requests")

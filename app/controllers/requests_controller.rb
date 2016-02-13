@@ -2,11 +2,11 @@ class RequestsController < ApplicationController
   before_action :set_request, only: [:show, :edit, :update, :destroy, :mark]
 
   # Pt 3a Mark action
-  def mark
-    @request.done = !@request.done
-    @request.save
-    redirect_to requests_path  
-  end
+  # def mark
+  #   @request.done = !@request.done
+  #   @request.save
+  #   redirect_to requests_path  
+  # end
 
   # GET /requests
   # GET /requests.json
@@ -57,7 +57,7 @@ class RequestsController < ApplicationController
   def update
     respond_to do |format|
       if @request.update(request_params)
-        format.html { redirect_to @request, notice: 'Request was successfully updated.' }
+        format.html { redirect_to update_success_direction(@request), notice: 'Request was successfully updated.' }
         format.json { render :show, status: :ok, location: @request }
       else
         format.html { render :edit }
@@ -84,6 +84,14 @@ class RequestsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def request_params
-      params.require(:request).permit(:name, :email, :department, :message) #done
+      params.require(:request).permit(:name, :email, :department, :message, :done) #done
+    end
+
+    def update_success_direction(req)
+        if request_params.has_key?(:done)
+          requests_path
+        else  
+          req
+        end
     end
 end
